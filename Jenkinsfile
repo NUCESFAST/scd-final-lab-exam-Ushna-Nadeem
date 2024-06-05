@@ -12,19 +12,18 @@ pipeline {
         stage('i211225_Install_Dependencies') {
             steps {
                 sh 'npm install'
-                }
             }
         }
         
         stage('i211225_Build_Images') {
             steps {
-                echo 'Succesfully build.'
+                echo 'Successfully built.'
             }
         }
         
         stage('i211225_Push_Images') {
             steps {
-                echo 'Succesfully pushed.'
+                echo 'Successfully pushed.'
             }
         }
     }
