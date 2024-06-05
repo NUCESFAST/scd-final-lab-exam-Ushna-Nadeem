@@ -11,7 +11,7 @@ pipeline {
         
         stage('i211225_Install_Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
         
