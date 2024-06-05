@@ -5,7 +5,7 @@ pipeline {
         stage('i211225_Checkout') {
             steps {
                 echo 'Checking out code from GitHub repository'
-                git 'https://github.com/NUCESFAST/scd-final-lab-exam-Ushna-Nadeem.git'
+                git branch: 'master', url: 'https://github.com/NUCESFAST/scd-final-lab-exam-Ushna-Nadeem.git'
             }
         }
         
