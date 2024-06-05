@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - '1225:1225'
+
+  auth:
+    build:
+      context: ./Auth
+      dockerfile: Dockerfile
+    ports:
+      - '3225:3225'
+
+  classrooms:
+    build:
+      context: ./Classrooms
+      dockerfile: Dockerfile
+    ports:
+      - '3225:3225'
+
+  event-bus:
+    build:
+      context: ./event-bus
+      dockerfile: Dockerfile
+    ports:
+      - '3225:3225'
+
+  post:
+    build:
+      context: ./Post
+      dockerfile: Dockerfile
+    ports:
+      - '3225:3225'
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+  images:
+    build:
+      context: ./Images
+      dockerfile: Dockerfile
+    ports:
+      - '8080:80'
+
+volumes:
+  mongo-data:
