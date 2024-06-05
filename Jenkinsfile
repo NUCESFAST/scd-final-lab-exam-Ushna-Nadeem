@@ -1,11 +1,6 @@
 pipeline {
     agent any
     
-    environment {
-        DOCKER_IMAGE_NAMES = 'frontend auth classrooms event-bus post images'
-        DOCKER_IMAGE_REPOS = 'ushna1923/frontend-image ushna1923/auth-image ushna1923/classrooms-image ushna1923/event-bus-image ushna1923/post-image ushna1923/images-image'
-    }
-    
     stages {
         stage('i211225_Checkout') {
             steps {
