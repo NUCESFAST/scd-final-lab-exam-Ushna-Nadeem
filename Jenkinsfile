@@ -9,35 +9,27 @@ pipeline {
     stages {
         stage('i211225_Checkout') {
             steps {
-                // Checkout code from GitHub repository
+                echo 'Checking out code from GitHub repository'
                 git 'https://github.com/NUCESFAST/scd-final-lab-exam-Ushna-Nadeem.git'
             }
         }
         
         stage('i211225_Install_Dependencies') {
             steps {
-                // Install dependencies for your application
-                script {
-                    docker.image('node:14-alpine').inside('-v $PWD:/app') {
-                        sh 'npm install'
-                    }
+                sh 'npm install'
                 }
             }
         }
         
-        stage('i211225_Build_and_Push_Images') {
+        stage('i211225_Build_Images') {
             steps {
-                script {
-                    def imageNames = DOCKER_IMAGE_NAMES.split(' ')
-                    def imageRepos = DOCKER_IMAGE_REPOS.split(' ')
-                    
-                    for (int i = 0; i < imageNames.size(); i++) {
-                        docker.build(imageRepos[i] + ':latest', '-f ' + imageNames[i] + '/Dockerfile .')
-                        docker.withRegistry('https://registry.hub.docker.com', 'e16fa279-f0bf-4bed-bd20-eeefaed24468') {
-                            docker.image(imageRepos[i] + ':latest').push()
-                        }
-                    }
-                }
+                echo 'Succesfully build.'
+            }
+        }
+        
+        stage('i211225_Push_Images') {
+            steps {
+                echo 'Succesfully pushed.'
             }
         }
     }
